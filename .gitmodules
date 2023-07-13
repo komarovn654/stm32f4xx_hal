@@ -1,0 +1,3 @@
+[submodule "third_party/embedded_configurator"]
+	path = third_party/embedded_configurator
+	url = https://github.com/komarovn654/embedded_configurator.git
