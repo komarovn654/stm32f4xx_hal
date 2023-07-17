@@ -46,6 +46,7 @@ typedef struct RCC_TypeDef
 #define RCC ((RCC_TypeDef *) RCC_BASE)
 
 /* RCC clock control register (RCC_CR) */
+#define RCC_CR_DEFAULT          (0x00000083)
 #define RCC_CR_HSION_POS        (0x00)
 #define RCC_CR_HSION_MSK        (0x01 << RCC_CR_HSION_POS)
 #define RCC_CR_HSIRDY_POS       (0x01)

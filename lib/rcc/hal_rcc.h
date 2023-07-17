@@ -4,10 +4,10 @@
 
 #define ERROR_GROUP_RCC 0x00
 
-typedef enum ErrorRCC
+typedef enum error_rcc
 {
     unknown = 0,
-} ErrorRCC;
+} error_rcc;
 
 #define ERROR_CODE_RCC(num) (ERROR_CODE(ERROR_CODE_RCC, num))
 
@@ -30,12 +30,6 @@ typedef enum SystemClockSource
     SCS_HSE = 1,
     SCS_PLLCLK = 2,
 } SystemClockSource;
-
-typedef enum PllSource
-{
-    PS_HSI = 0,
-    PS_HSE = 1,
-} PllSource;
 
 #define HSI_FREQUENCY 16000000UL
 #ifndef HSE_FREQUENCY
