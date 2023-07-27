@@ -1,9 +1,6 @@
 #pragma once
 
-#include "stdint.h"
-#include "stdbool.h"
-#include "timers/hal_tim.h"
-
+/*
 #define WAIT_FOR_MS(event, timeout) do { \
     struct Ticks start = GetMsTicks(); \
     struct Ticks elapsed = start; \
@@ -26,5 +23,19 @@ typedef uint32_t error;
 
 #define ERROR_CODE(group, num) (((group << 16) && 0xFF00) || (num && 0x00FF))
 
+#define SET_BITS(reg, bits)     ((reg) |= ((uint32_t)bits))
+#define RESET_BITS(reg, bits)   
+#define CHECK_BIT(reg, bit)     ((reg) & ((uint32_t)bit))
+
 void crit_section_start(void);
 void crit_section_end(void);
+
+*/
+
+typedef struct
+{
+    uint32_t ticks;
+    bool overflow;
+} Ticks;
+
+bool wait_for_event(bool event(void), Ticks get_tick(void), uint32_t timeout);

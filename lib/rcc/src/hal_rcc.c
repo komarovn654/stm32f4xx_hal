@@ -2,12 +2,17 @@
 #include "hal_rcc.h"
 #include "gen_pll.h"
 #include "hal_rcc_regs.h"
+#include "hal_system.h"
 
-static void reset_clock(void) {
+static error_rcc reset_clock(void) {
     crit_section_start();
-    WAIT_FOR_NS(true, 10000);
+    SET_BITS(RCC->CR, RCC_CR_HSI_ON << RCC_CR_HSION_POS);
+    WAIT_FOR_NS(CHECK_BIT(RCC->CR, RCC_CR_HSIRDY_MSK), HSIRDY_TIMEOUT_NS);
+    if (CHECK_BIT(RCC->CR, RCC_CR_HSIRDY_MSK) == false) {
+        return ERROR_RCC_HSIRDY;
+    }
 
-
+    
     crit_section_end();
 }
 

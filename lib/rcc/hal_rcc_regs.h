@@ -72,6 +72,8 @@ typedef struct RCC_TypeDef
 #define RCC_CR_PLLI2SRDY_POS    (0x1B)
 #define RCC_CR_PLLI2SRDY_MSK    (0x01 << RCC_CR_PLLI2SRDY_POS)
 
+#define RCC_CR_HSI_ON           (0x01)
+
 /* RCC PLL configuration register (RCC_PLLCFGR) */
 #define RCC_PLLCFGR_RESET_STATE (0x24003010)
 #define RCC_PLLCFGR_PLLM_POS    (0x00)

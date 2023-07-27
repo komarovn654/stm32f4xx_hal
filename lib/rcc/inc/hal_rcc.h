@@ -2,11 +2,14 @@
 
 #include "system/hal_system.h"
 
+#define HSIRDY_TIMEOUT_NS (500)
+
 #define ERROR_GROUP_RCC 0x00
 
 typedef enum error_rcc
 {
-    unknown = 0,
+    ERROR_RCC_UNKNOWN = 0,
+    ERROR_RCC_HSIRDY,
 } error_rcc;
 
 #define ERROR_CODE_RCC(num) (ERROR_CODE(ERROR_CODE_RCC, num))

@@ -1,3 +1,3 @@
 #pragma once
 
-int main(void);
+int main(int ac, char** av);

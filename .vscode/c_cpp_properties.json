@@ -4,7 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/lib/rcc/inc"
+                "${workspaceFolder}/lib/rcc/inc",
+                "${workspaceFolder}/third_party/cpputest/include/CppUTest"
             ],
             "defines": [],
             "macFrameworkPath": [
