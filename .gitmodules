@@ -4,3 +4,6 @@
 [submodule "third_party/cpputest"]
 	path = third_party/cpputest
 	url = https://github.com/cpputest/cpputest.git
+[submodule "third_party/CMSIS_5"]
+	path = third_party/CMSIS_5
+	url = https://github.com/ARM-software/CMSIS_5.git
