@@ -2,7 +2,7 @@
 #include "CommandLineTestRunner.h"
 
 extern "C" {
-    #include "hal_system.h"
+    #include "stm32f407xx.h"
     #include "hal_system_systick.h"
 }
 

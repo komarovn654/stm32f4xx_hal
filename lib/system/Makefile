@@ -25,17 +25,15 @@ UTEST_OBJ = $(wildcard $(CPPUTEST_PATH)/cpputest_build/src/CppUTest/*.o)
 UTEST_EXT_OBJ = $(wildcard $(CPPUTEST_PATH)/cpputest_build/src/CppUTestExt/*.o)
 PLATFORM_OBJ = $(wildcard $(CPPUTEST_PATH)/cpputest_build/src/Platforms/Gcc/*.o)
 
-.SILENT:run compile link
+.SILENT:run compile
 
-run: link
+run: compile
 	./test.out
 	rm *.o *.out
 
 compile:
 	$(CXX) -c $(INC) $(SRC_CPP)
 	$(CC) -c $(INC) $(SRC_C)
-
-link: compile
 	$(CXX) -o test.out $(OBJ_CPP) $(OBJ_C) $(UTEST_OBJ) $(UTEST_EXT_OBJ) $(PLATFORM_OBJ)
 
 clean:
