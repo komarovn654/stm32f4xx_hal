@@ -15,6 +15,8 @@ PLATFORM_SRC = $(wildcard $(CPPUTEST_PATH)/src/Platforms/armcc/*.cpp)
 UTEST_OBJS_NAME = $(patsubst %.cpp, %.o, $(notdir $(UTEST_SRC) $(UTESTEXT_SRC) $(PLATFORM_SRC)))
 UTEST_OBJS = $(addprefix $(CPPUTEST_OBJS_PATH)/obj/, $(UTEST_OBJS_NAME))
 
+UTEST_HOST = $(wildcard $(CPPUTEST_PATH)/cpputest_build/src/CppUTest/*.o $(CPPUTEST_PATH)/cpputest_build/src/CppUTestExt/*.o $(CPPUTEST_PATH)/cpputest_build/src/Platforms/Gcc/*.o)
+
 #Source	files
 SRC_CPP = $(wildcard utest/*.cpp)
 SRC_C = $(wildcard src/*.c)
@@ -30,8 +32,8 @@ CFLAGS = -c -g3 $(MACHINE) -O0
 CXXFLAGS = -c -g3 $(MACHINE) -O0
 # EXTRA_FLAGS = -Wall -Wextra -Wshadow -Wdouble-promotion -Wundef -Wconversion -Wpadded
 # STACK_FLAGS = -fstack-usage -Wstack-usage=
-LDFLAGS = -specs=nano.specs -specs=nosys.specs $(MACHINE) -T stm32f407_ls.ld -Wl,-Map=application.map
-LDFLAGS_SH = $(MACHINE) -specs=rdimon.specs -T stm32f407_ls.ld
+LDFLAGS = -specs=nano.specs -specs=nosys.specs $(MACHINE) -T ../../stm32f407_ls.ld -Wl,-Map=application.map
+LDFLAGS_SH = $(MACHINE) -specs=rdimon.specs -T ../../stm32f407_ls.ld
 
 INC = -I$(CPPUTEST_PATH)/include/CppUTest \
 	-I$(CPPUTEST_PATH)/cpputest/include/CppUTestExt \
@@ -43,7 +45,9 @@ INC = -I$(CPPUTEST_PATH)/include/CppUTest \
 $(UTEST_OBJS):
 	cd $(ROOT_PATH)/tools/cpputest && make all
 
-all: $(UTEST_OBJS) $(OBJ_C) $(OBJ_CPP) startup.o
+all: application.elf
+
+compile: $(UTEST_OBJS) $(OBJ_C) $(OBJ_CPP) startup.o
 
 $(OBJ_C): $(SRC_C)
 	$(CC) $(CFLAGS) $(INC) $^
@@ -54,8 +58,16 @@ $(OBJ_CPP): $(SRC_CPP)
 startup.o: $(CORE_PATH)/startup.c
 	$(CC) $(CFLAGS) $(INC) $^ -o $@
 
-application.elf: $(UTEST_OBJS) main.o startup.o
-	$(CXX) $(LDFLAGS) $^ -o $@
+application.elf: compile
+	$(CXX) $(LDFLAGS) $(UTEST_OBJS) $(OBJ_C) $(OBJ_CPP) startup.o -o $@
+
+app.elf: compile
+	$(CXX) $(LDFLAGS_SH) $(UTEST_OBJS) $(OBJ_C) $(OBJ_CPP) startup.o -o $@	
+
+application:
+	gcc -c $(SRC_C) $(INC)
+	g++ -c $(SRC_CPP) $(INC)
+	g++ -o app $(OBJ_CPP) $(OBJ_C) $(UTEST_HOST)
 
 application.map: application.elf
 
