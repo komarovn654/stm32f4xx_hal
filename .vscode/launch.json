@@ -6,7 +6,7 @@
     "configurations": [
         {
             "cwd": "${workspaceRoot}",
-            "executable": "lib/system/application.elf",
+            "executable": "lib/system/build/system_lib",
             "name": "Debug with OpenOCD",
             "request": "launch",
             "type": "cortex-debug",

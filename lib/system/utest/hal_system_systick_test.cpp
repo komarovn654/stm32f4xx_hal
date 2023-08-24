@@ -13,15 +13,15 @@ TEST_GROUP(SystemTick)
 
     void setup()
     {
-        // addr = (SysTick_Type*)malloc(sizeof(SysTick_Type));
-        // memset(addr, 0, sizeof(SysTick_Type));
-        addr = SysTick;
+        addr = (SysTick_Type*)malloc(sizeof(SysTick_Type));
+        memset(addr, 0, sizeof(SysTick_Type));
+        // addr = SysTick;
         memset(&settings, 0, sizeof(settings));
         settings.clk_src = SYSTICK_SOURCE_AHB;
     }
     void teardown()
     {
-        // free(addr);
+        free(addr);
     }
 };
 
