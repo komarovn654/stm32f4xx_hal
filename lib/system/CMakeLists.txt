@@ -21,7 +21,7 @@ target_include_directories(${PROJECT_NAME}
 
 if (CMAKE_BUILD_TYPE STREQUAL UTEST_TARGET)
     target_sources(${PROJECT_NAME} PRIVATE ../core/startup.c)
-    target_link_directories(${PROJECT_NAME} PRIVATE ../../tools/cpputest/build/CppUTest)
+    target_link_directories(${PROJECT_NAME} PRIVATE ../../tools/cpputest/out/CppUTest)
 elseif (CMAKE_BUILD_TYPE STREQUAL UTEST_HOST)
     target_link_directories(${PROJECT_NAME} PRIVATE ../../third_party/cpputest/cpputest_build/lib)
 endif()

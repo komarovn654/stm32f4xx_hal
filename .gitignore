@@ -11,7 +11,9 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
-third_part/*
+third_part/
+out/
+build/
 
 *.o
 *.elf
