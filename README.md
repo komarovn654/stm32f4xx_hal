@@ -1,4 +1,4 @@
 code style:
-functions - MyFunc, static myFunc
+functions - my_func, static my_func
 macros    - MY_MACROS
-variables - myVariable
+variables - my_variable
