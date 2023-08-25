@@ -108,6 +108,7 @@ SECTIONS
         PROVIDE ( end = . );
         PROVIDE ( _end = . );
         __end__ = end;
+        _exit = end;
         . = ALIGN(4);
     } > ram
 

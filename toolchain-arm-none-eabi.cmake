@@ -12,7 +12,7 @@ set(CMAKE_CXX_COMPILER ${TOOLCHAIN_BIN_DIR}/${TOOLCHAIN}-g++${TOOLCHAIN_EXT} CAC
 
 set(CMAKE_C_FLAGS "-g3 -mthumb -mcpu=cortex-m4 -O0" CACHE INTERNAL "C Compiler options")
 set(CMAKE_CXX_FLAGS "-g3 -mthumb -mcpu=cortex-m4 -O0" CACHE INTERNAL "C++ Compiler options")
-set(CMAKE_EXE_LINKER_FLAGS "--specs=nano.specs --specs=nosys.specs -mthumb -mcpu=cortex-m4 -T /Users/nikolajkomarov/stm32f4xx_hal/stm32f407_ls.ld -Wl,-Map=application.map" CACHE INTERNAL "Linker options")
+set(CMAKE_EXE_LINKER_FLAGS "-mthumb -mcpu=cortex-m4 -T /Users/nikolajkomarov/stm32f4xx_hal/stm32f407_ls.ld -Wl,-Map=application.map" CACHE INTERNAL "Linker options")
 
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
