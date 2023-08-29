@@ -21,20 +21,20 @@ add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_INCLUDES})
 
 if (CMAKE_BUILD_TYPE STREQUAL UTEST_TARGET)
-    # string(APPEND PROJECT_SOURCES " ../core/startup.c")
-    # string(APPEND PROJECT_INCLUDES " ../../tools/cpputest/out/CppUTest")
-
     target_sources(${PROJECT_NAME} PRIVATE ../core/startup.c)
     target_link_directories(${PROJECT_NAME} PRIVATE ../../tools/cpputest/out/CppUTest)
-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "--specs=nano.specs --specs=nosys.specs")
+    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "--specs=nano.specs --specs=nosys.specs"
+    COMPILE_FLAGS "-D UTEST_TARGET=1")
 
     add_executable(${PROJECT_NAME}_sh ${PROJECT_SOURCES} ../core/startup.c)
     target_include_directories(${PROJECT_NAME}_sh PRIVATE ${PROJECT_INCLUDES})
     target_link_directories(${PROJECT_NAME}_sh PRIVATE ../../tools/cpputest/out/CppUTest)
     target_link_libraries(${PROJECT_NAME}_sh CppUTest)
-    set_target_properties(${PROJECT_NAME}_sh PROPERTIES LINK_FLAGS "--specs=rdimon.specs")
+    set_target_properties(${PROJECT_NAME}_sh PROPERTIES LINK_FLAGS "--specs=rdimon.specs"
+    COMPILE_FLAGS "-D UTEST_TARGET=1")
 elseif (CMAKE_BUILD_TYPE STREQUAL UTEST_HOST)
     target_link_directories(${PROJECT_NAME} PRIVATE ../../third_party/cpputest/cpputest_build/lib)
+    set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS "-D UTEST_HOST=1")
 endif()
 
 target_link_libraries(${PROJECT_NAME} CppUTest)

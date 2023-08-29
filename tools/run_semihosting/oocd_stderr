@@ -15,8 +15,8 @@ Info : [stm32f4x.cpu] target has 6 breakpoints, 4 watchpoints
 Info : starting gdb server for stm32f4x.cpu on 3333
 Info : Listening on port 3333 for gdb connections
 Info : accepting 'gdb' connection on tcp/3333
-[stm32f4x.cpu] halted due to debug-request, current mode: Handler HardFault
-xPSR: 0x01000003 pc: 0x08000d80 msp: 0x2001ffdc
+[stm32f4x.cpu] halted due to breakpoint, current mode: Thread 
+xPSR: 0x41000000 pc: 0x0802e924 msp: 0x2001fe50
 Info : device id = 0x10076413
 Info : flash size = 1024 KiB
 Info : flash size = 512 bytes

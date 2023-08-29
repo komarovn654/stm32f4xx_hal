@@ -19,8 +19,7 @@ typedef struct systick {
     bool interrupt;
 } systick;
 
-error_system systick_aplly_settings(SysTick_Type* addr, systick* settings);
-systick systick_get_settings(void);
-void systick_start(void);
-void systick_stop(void);
-void systick_reset(void);
+error_system systick_apply_settings(SysTick_Type* addr, systick* settings);
+void systick_get_settings(SysTick_Type* addr, systick* settings);
+void systick_start(SysTick_Type* addr);
+void systick_stop(SysTick_Type* addr);
