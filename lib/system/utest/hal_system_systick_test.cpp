@@ -18,7 +18,7 @@ TEST_GROUP(SystemTick)
         addr->CTRL = SYSTICK_CTRL_DEFAULT;
         addr->LOAD = SYSTICK_LOAD_DEFAULT;
         memset(&settings, 0, sizeof(settings));
-        settings.clk_src = SYSTICK_SOURCE_AHB;
+        settings.clk_src = SYSTICK_SOURCE_AHB_DIV8;
     }
     void teardown()
     {
@@ -29,7 +29,7 @@ TEST_GROUP(SystemTick)
         addr = (SysTick_Type*)malloc(sizeof(SysTick_Type));
         memset(addr, 0, sizeof(SysTick_Type));
         memset(&settings, 0, sizeof(settings));
-        settings.clk_src = SYSTICK_SOURCE_AHB;
+        settings.clk_src = SYSTICK_SOURCE_AHB_DIV8;
     }
     void teardown()
     {
@@ -69,7 +69,7 @@ TEST(SystemTick, ApplySettings_ResetFields)
 
 TEST(SystemTick, ApplySettings_SetFields)
 {
-    settings.clk_src = SYSTICK_SOURCE_AHB_DIV8;
+    settings.clk_src = SYSTICK_SOURCE_AHB;
     settings.interrupt = true;
     settings.reload_value = 0xFFFFFF;
     systick_apply_settings(addr, &settings);
@@ -81,20 +81,20 @@ TEST(SystemTick, ApplySettings_SetFields)
 
 TEST(SystemTick, GetSettings_EmptyFields)
 {
-    settings.clk_src = SYSTICK_SOURCE_AHB_DIV8;
+    settings.clk_src = SYSTICK_SOURCE_AHB;
     settings.interrupt = true;
     settings.reload_value = 0xFFFFFF;
     
     systick_get_settings(addr, &settings);
 
-    BITS_EQUAL(0 << SysTick_CTRL_CLKSOURCE_Pos | 0 << SysTick_CTRL_TICKINT_Pos, addr->CTRL, 
-            SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk);
-    BITS_EQUAL(0, addr->LOAD, SysTick_LOAD_RELOAD_Msk);    
+    CHECK_EQUAL(false, settings.interrupt);
+    CHECK_EQUAL(0, settings.reload_value);
+    CHECK_EQUAL(SYSTICK_SOURCE_AHB_DIV8, settings.clk_src);  
 }
 
 TEST(SystemTick, GetSettings_SetFields)
 {
-    settings.clk_src = SYSTICK_SOURCE_AHB_DIV8;
+    settings.clk_src = SYSTICK_SOURCE_AHB;
     settings.interrupt = true;
     settings.reload_value = 0xFFFFFF;
     systick_apply_settings(addr, &settings);
@@ -102,9 +102,9 @@ TEST(SystemTick, GetSettings_SetFields)
 
     systick_get_settings(addr, &settings);
 
-    BITS_EQUAL(1 << SysTick_CTRL_CLKSOURCE_Pos | 1 << SysTick_CTRL_TICKINT_Pos, addr->CTRL, 
-            SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk);
-    BITS_EQUAL(0xFFFFFF, addr->LOAD, SysTick_LOAD_RELOAD_Msk);    
+    CHECK_EQUAL(true, settings.interrupt);
+    CHECK_EQUAL(0xFFFFFF, settings.reload_value);
+    CHECK_EQUAL(SYSTICK_SOURCE_AHB, settings.clk_src);  
 }
 
 TEST(SystemTick, Start)
@@ -121,9 +121,8 @@ TEST(SystemTick, Stop)
     BITS_EQUAL(0, addr->CTRL, SysTick_CTRL_ENABLE_Msk);
 }
 
-TEST(SystemTick, Reset)
+TEST(SystemTick, Calculate1msReloadValue)
 {
-    systick_stop(addr);
-
-    BITS_EQUAL(0, addr->CTRL, SysTick_CTRL_ENABLE_Msk);
+    CHECK_EQUAL(0, systick_1ms_reloadvalue(0));
+    CHECK_EQUAL(180000, systick_1ms_reloadvalue(180000000));
 }

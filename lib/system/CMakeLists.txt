@@ -13,7 +13,7 @@ set(COMMON_SOURCES
     utest/hal_system_test.cpp
     utest/hal_system_utmain.cpp
 )
-set(TARGET_SOURCES ../core/startup.c)
+set(TARGET_SOURCES ../core/interrupts.c ../core/startup.c)
 
 set(COMMON_INCLUDES
     inc 
@@ -29,7 +29,7 @@ if (CMAKE_BUILD_TYPE STREQUAL UTEST_HOST)
     target_include_directories(${PROJECT_HOST_UTEST} PRIVATE ${COMMON_INCLUDES})
     target_link_directories(${PROJECT_HOST_UTEST} PRIVATE ../../third_party/cpputest/cpputest_build/lib)
     target_link_libraries(${PROJECT_HOST_UTEST} CppUTest)
-    set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS "-D UTEST_HOST=1")
+    set_target_properties(${PROJECT_HOST_UTEST} PROPERTIES COMPILE_FLAGS "-D UTEST_HOST=1")
 endif()
 
 # Utest target executable
@@ -38,11 +38,12 @@ if (CMAKE_BUILD_TYPE STREQUAL UTEST_TARGET)
     target_include_directories(${PROJECT_TARGET_UTEST} PRIVATE ${COMMON_INCLUDES})
     target_link_directories(${PROJECT_TARGET_UTEST} PRIVATE ../../tools/cpputest/out/CppUTest)
     target_link_libraries(${PROJECT_TARGET_UTEST} CppUTest)
-    set_target_properties(${PROJECT_NAME} PROPERTIES 
+    set_target_properties(${PROJECT_TARGET_UTEST} PROPERTIES 
     LINK_FLAGS "--specs=nano.specs --specs=nosys.specs"
     COMPILE_FLAGS "-D UTEST_TARGET=1"
     )
 
+    # Utest target with semihosting executable
     add_executable(${PROJECT_TARGET_SH_UTEST} ${COMMON_SOURCES} ${TARGET_SOURCES})
     target_include_directories(${PROJECT_TARGET_SH_UTEST} PRIVATE ${COMMON_INCLUDES})
     target_link_directories(${PROJECT_TARGET_SH_UTEST} PRIVATE ../../tools/cpputest/out/CppUTest)
@@ -52,8 +53,3 @@ if (CMAKE_BUILD_TYPE STREQUAL UTEST_TARGET)
     COMPILE_FLAGS "-D UTEST_TARGET=1"
     )
 endif()
-    
-    
-
-
-

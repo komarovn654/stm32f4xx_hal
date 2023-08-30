@@ -23,3 +23,4 @@ error_system systick_apply_settings(SysTick_Type* addr, systick* settings);
 void systick_get_settings(SysTick_Type* addr, systick* settings);
 void systick_start(SysTick_Type* addr);
 void systick_stop(SysTick_Type* addr);
+uint32_t systick_1ms_reloadvalue(uint32_t systick_frequncy);

@@ -17,5 +17,5 @@
     },
     "cortex-debug.gdbPath": "/Applications/ARM/bin/arm-none-eabi-gdb",
     "cortex-debug.openocdPath": "/opt/homebrew/bin/openocd",
-    "cortex-debug.variableUseNaturalFormat": false
+    "cortex-debug.variableUseNaturalFormat": true
 }

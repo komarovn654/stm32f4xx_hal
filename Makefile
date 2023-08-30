@@ -21,4 +21,4 @@ clean:
 	rm *.o *.out *.elf *.map
 
 load:
-	openocd -f board/stm32f4discovery.cfg -c "program application.elf verify exit reset"
+	openocd -f board/stm32f4discovery.cfg -c "program lib/system/out/bin/sl_ut_target_sh.elf verify exit reset"
