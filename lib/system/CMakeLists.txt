@@ -9,6 +9,8 @@ set(PROJECT_TARGET_SH_UTEST "sl_ut_target_sh")
 set(COMMON_SOURCES 
     src/hal_system.c
     src/hal_system_systick.c
+    src/hal_system_mstick.c
+    utest/hal_system_mstick_test.cpp
     utest/hal_system_systick_test.cpp
     utest/hal_system_test.cpp
     utest/hal_system_utmain.cpp

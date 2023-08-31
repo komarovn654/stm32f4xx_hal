@@ -7,6 +7,8 @@
 #define SYSTICK_CTRL_DEFAULT (0)
 #define SYSTICK_LOAD_DEFAULT (0)
 
+#define SYSTICK_1MS_RELOADVALUE(SYSTICK_FREQ) (SYSTICK_FREQ / 1000)
+
 typedef enum systick_source {
     SYSTICK_SOURCE_UNKNOWN = 0,
     SYSTICK_SOURCE_AHB = 1,
@@ -19,8 +21,7 @@ typedef struct systick {
     bool interrupt;
 } systick;
 
-error_system systick_apply_settings(SysTick_Type* addr, systick* settings);
+error systick_apply_settings(SysTick_Type* addr, systick* settings);
 void systick_get_settings(SysTick_Type* addr, systick* settings);
 void systick_start(SysTick_Type* addr);
 void systick_stop(SysTick_Type* addr);
-uint32_t systick_1ms_reloadvalue(uint32_t systick_frequncy);

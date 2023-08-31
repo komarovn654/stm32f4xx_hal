@@ -13,7 +13,9 @@
         "stdexcept": "cpp",
         "type_traits": "cpp",
         "hal_system_systick.h": "c",
-        "stm32f407xx.h": "c"
+        "stm32f407xx.h": "c",
+        "stdbool.h": "c",
+        "hal_system_mstick.h": "c"
     },
     "cortex-debug.gdbPath": "/Applications/ARM/bin/arm-none-eabi-gdb",
     "cortex-debug.openocdPath": "/opt/homebrew/bin/openocd",

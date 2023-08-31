@@ -22,6 +22,9 @@ TEST_GROUP(SystemTick)
     }
     void teardown()
     {
+        SysTick->CTRL = SYSTICK_CTRL_DEFAULT;
+        SysTick->LOAD = SYSTICK_LOAD_DEFAULT;
+        SysTick->VAL = 0;
     }
 #elif (defined UTEST_HOST && UTEST_HOST==1)
     void setup()
@@ -119,10 +122,11 @@ TEST(SystemTick, Stop)
     systick_stop(addr);
 
     BITS_EQUAL(0, addr->CTRL, SysTick_CTRL_ENABLE_Msk);
+    BITS_EQUAL(0, addr->VAL, SysTick_VAL_CURRENT_Msk);
 }
 
 TEST(SystemTick, Calculate1msReloadValue)
 {
-    CHECK_EQUAL(0, systick_1ms_reloadvalue(0));
-    CHECK_EQUAL(180000, systick_1ms_reloadvalue(180000000));
+    CHECK_EQUAL(0, SYSTICK_1MS_RELOADVALUE(0));
+    CHECK_EQUAL(180000, SYSTICK_1MS_RELOADVALUE(180000000));
 }

@@ -26,5 +26,4 @@
 void crit_section_start(void);
 void crit_section_end(void);
 
-void delay_ns(uint32_t delay);
-bool wait_for_event_ns(bool event(void), uint32_t timeout);
+

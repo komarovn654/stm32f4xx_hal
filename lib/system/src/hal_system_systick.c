@@ -2,7 +2,7 @@
 #include "hal_system.h"
 #include "hal_system_systick.h"
 
-static error_system assert_settings(systick* settings)
+static error assert_settings(systick* settings)
 {
     if (!(settings->clk_src == SYSTICK_SOURCE_AHB_DIV8 || settings->clk_src == SYSTICK_SOURCE_AHB)) {
         return ERROR_ASSERT;
@@ -15,7 +15,7 @@ static error_system assert_settings(systick* settings)
     return ERROR_NOERROR;
 }
 
-error_system systick_apply_settings(SysTick_Type* addr, systick* settings)
+error systick_apply_settings(SysTick_Type* addr, systick* settings)
 {
     hal_assert(assert_settings, settings);
 
@@ -45,6 +45,7 @@ void systick_start(SysTick_Type* addr)
 void systick_stop(SysTick_Type* addr)
 {
     CLR_BIT(addr->CTRL, 1 << SysTick_CTRL_ENABLE_Pos);
+    addr->VAL = 0;
 }
 
 uint32_t systick_1ms_reloadvalue(uint32_t systick_frequncy)
