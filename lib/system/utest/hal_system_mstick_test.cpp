@@ -63,7 +63,7 @@ TEST(SystemMsTick, MsTickWaitFor)
     systick_stop(SysTick);
 }
 
-TEST(SystemMsTick, MsTickDelay_running)
+TEST(SystemMsTick, MsTickWaitFor_timeout)
 {
     systick settings = {
         .reload_value = SYSTICK_1MS_RELOADVALUE(16000000),
@@ -81,4 +81,29 @@ TEST(SystemMsTick, MsTickDelay_running)
     
     systick_stop(SysTick);
 }
+
+bool test_event(uint32_t target)
+{
+    return (system_mstick_get() > target / 2) ? true : false;
+}
+TEST(SystemMsTick, MsTickWaitFor_event)
+{
+    systick settings = {
+        .reload_value = SYSTICK_1MS_RELOADVALUE(16000000),
+        .clk_src = SYSTICK_SOURCE_AHB,
+        .interrupt = true,
+    };
+    __enable_irq();
+    systick_apply_settings(SysTick, &settings);
+    systick_start(SysTick);
+
+    while(!system_mstick_isrunning());
+
+    system_mstick_wait_for(test_event(500), 500);
+    CHECK_TRUE(system_mstick_get() < 500);
+    CHECK_TRUE(test_event(500));
+    
+    systick_stop(SysTick);
+}
+
 #endif
