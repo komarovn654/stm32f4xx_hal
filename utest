@@ -1,5 +1,0 @@
-libs = $(wildcard /Users/nikolajkomarov/stm32f4xx_hal/third_party/cpputest/cpputest_build/src/CppUTest/*.o)
-platform = $(wildcard /Users/nikolajkomarov/stm32f4xx_hal/third_party/cpputest/cpputest_build/src/Platforms/Gcc/*.o)
-
-all:
-	g++ -o main main.o $(libs) $(platform)

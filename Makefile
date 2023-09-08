@@ -1,24 +1,31 @@
-CC= arm-none-eabi-gcc
-MACHINE= cortex-m4
-CFLAGS= -c -g -mthumb -mcpu=$(MACHINE) -std=gnu11 -O0
-LDFLAGS= -nostdlib -T stm32f407_ls.ld -Wl,-Map=application.map
-INC=
+# CC= arm-none-eabi-gcc
+# MACHINE= cortex-m4
+# CFLAGS= -c -g -mthumb -mcpu=$(MACHINE) -std=gnu11 -O0
+# LDFLAGS= -nostdlib -T stm32f407_ls.ld -Wl,-Map=application.map
+# INC=
 
-all: main.o startup.o application.elf 
+# all: main.o startup.o application.elf 
 
-main.o: main.c
-	$(CC) $(CFLAGS) $(INC) $^ -o $@
+# main.o: main.c
+# 	$(CC) $(CFLAGS) $(INC) $^ -o $@
 
-startup.o: startup.c
-	$(CC) $(CFLAGS) $(INC) $^ -o $@
+# startup.o: startup.c
+# 	$(CC) $(CFLAGS) $(INC) $^ -o $@
 
-application.elf: main.o startup.o
-	$(CC) $(LDFLAGS) $^ -o $@
+# application.elf: main.o startup.o
+# 	$(CC) $(LDFLAGS) $^ -o $@
 
-application.map: application.elf
+# application.map: application.elf
 
-clean:
-	rm *.o *.out *.elf *.map
+# clean:
+# 	rm *.o *.out *.elf *.map
 
-load:
-	openocd -f board/stm32f4discovery.cfg -c "program lib/system/out/bin/sl_ut_target_sh.elf verify exit reset"
+# load:
+# 	openocd -f board/stm32f4discovery.cfg -c "program lib/system/out/bin/sl_ut_target_sh.elf verify exit reset"
+
+
+undefine foo
+undefine bar
+
+$(info $(origin foo))
+$(info $(flavor bar))

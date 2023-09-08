@@ -3,7 +3,8 @@
 #define PLL_SOURCE_HSE (1)
 #define PLL_SOURCE_HSI (0)
 
-#define RCC_PLLCFGR_RESET_STATE (0x24003010)
+/* RCC PLL configuration register (RCC_PLLCFGR) */
+#define RCC_PLLCFGR_RESET_VALUE (0x24003010)
 #define RCC_PLLCFGR_PLLM_POS    (0x00)
 #define RCC_PLLCFGR_PLLM_MSK    (0x3F << RCC_PLLCFGR_PLLM_POS)
 #define RCC_PLLCFGR_PLLN_POS    (0x06)

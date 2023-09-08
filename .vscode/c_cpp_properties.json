@@ -7,9 +7,12 @@
                 "${workspaceFolder}/lib/**",
                 "${workspaceFolder}/third_party/cpputest/include/CppUTest",
                 "${workspaceFolder}/third_party/CMSIS_5/CMSIS/Core/Include",
-                "${workspaceFolder}/lib/system/inc"
+                "${workspaceFolder}/lib/system/inc",
+                "${workspaceFolder}/lib/rcc/inc"
             ],
-            "defines": ["UTEST_TARGET=1"],
+            "defines": [
+                "UTEST_TARGET=1"
+            ],
             "macFrameworkPath": [
                 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
             ],

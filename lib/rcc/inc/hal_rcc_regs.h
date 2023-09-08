@@ -74,19 +74,6 @@ typedef struct RCC_TypeDef
 
 #define RCC_CR_HSI_ON           (0x01)
 
-/* RCC PLL configuration register (RCC_PLLCFGR) */
-#define RCC_PLLCFGR_RESET_STATE (0x24003010)
-#define RCC_PLLCFGR_PLLM_POS    (0x00)
-#define RCC_PLLCFGR_PLLM_MSK    (0x3F << RCC_PLLCFGR_PLLM_POS)
-#define RCC_PLLCFGR_PLLN_POS    (0x06)
-#define RCC_PLLCFGR_PLLN_MSK    (0x3FF << RCC_PLLCFGR_PLLN_POS)
-#define RCC_PLLCFGR_PLLP_POS    (0x10)
-#define RCC_PLLCFGR_PLLP_MSK    (0x03 << RCC_PLLCFGR_PLLP_POS)
-#define RCC_PLLCFGR_PLLSRC_POS  (0x16)
-#define RCC_PLLCFGR_PLLSRC_MSK  (0x01 << RCC_PLLCFGR_PLLSRC_POS)
-#define RCC_PLLCFGR_PLLQ_POS    (0x18)
-#define RCC_PLLCFGR_PLLQ_MSK    (0x0F << RCC_PLLCFGR_PLLQ_POS)
-
 /* RCC clock configuration register (RCC_CFGR) */
 #define RCC_CFGR_RESET_VALUE    (0x00000000U)
 

@@ -1,14 +1,20 @@
 #pragma once
 
 #include "stdio.h"
-#include "hal_rcc.h"
 
-#define RCC_SYSTEM_CLOCK_MAX (180000000U)
+#define RCC_SYSCLK_MAX      (180000000UL)
+#define RCC_SYSCLK_DEFAULT  (16000000UL)
+#define RCC_HCLK_DEFAULT    (16000000UL)
+#define RCC_FCLK_DEFAULT    (16000000UL)
+#define RCC_SYSTICK_DEFAULT (16000000UL) 
 
-typedef struct Clocks
-{
-    uint32_t system;
-} Clocks;
+typedef struct clocks {
+    uint32_t sysclk;
+    uint32_t hclk;
+    uint32_t fclk;
+    uint32_t systick;
+} clocks;
 
-error_rcc set_system_clock(uint32_t);
-uint32_t get_system_clock(void);
+void rcc_clocks_set_default(void);
+clocks* rcc_clocks_get(void);
+void rcc_clocks_update(void);

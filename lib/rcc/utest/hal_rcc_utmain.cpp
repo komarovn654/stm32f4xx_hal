@@ -2,5 +2,7 @@
 
 int main(int ac, char** av)
 {
-    return CommandLineTestRunner::RunAllTests(ac, av);
+    RUN_ALL_TESTS(ac, av);
+
+    return 0;
 }

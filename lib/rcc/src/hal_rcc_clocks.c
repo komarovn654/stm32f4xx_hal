@@ -1,21 +1,42 @@
+#include "hal_core.h"
 #include "hal_rcc.h"
-#include "hal_rcc_clocks.h"
+#include "gen_pll.h"
 
-static Clocks clocks = {
-    .system = 0,
+static clocks rcc_clocks = {
+    .sysclk = RCC_SYSCLK_DEFAULT,
+    .hclk = RCC_HCLK_DEFAULT,
+    .fclk = RCC_FCLK_DEFAULT,
+    .systick = RCC_SYSTICK_DEFAULT,
 };
 
-error_rcc set_system_clock(uint32_t value)
+void rcc_clocks_set_default(void)
 {
-    if (value > RCC_SYSTEM_CLOCK_MAX) {
-        return ERROR_RCC_SYSCLK_ASSERT;
-    }
-
-    clocks.system = value;
-    return ERROR_RCC_NOERROR;
+    rcc_clocks.sysclk = RCC_SYSCLK_DEFAULT;
+    rcc_clocks.hclk = RCC_HCLK_DEFAULT;
+    rcc_clocks.fclk = RCC_FCLK_DEFAULT;
+    rcc_clocks.systick = RCC_SYSTICK_DEFAULT;
 }
 
-uint32_t get_system_clock(void)
+clocks* rcc_clocks_get(void)
 {
-    return clocks.system;
+    return &rcc_clocks;
+}
+
+void rcc_clocks_update(void)
+{
+    switch (GET_BIT(RCC->PLLCFGR, RCC_CFGR_SW_MSK))
+    {
+    case 0:
+        /* code */
+        break;
+    case 1:
+        /* code */
+        break;
+    case 2:
+        /* code */
+        break;                
+    
+    default:
+        break;
+    }
 }
