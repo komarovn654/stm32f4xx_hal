@@ -20,6 +20,24 @@
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-arm"
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/lib/**",
+                "${workspaceFolder}/third_party/cpputest/include/CppUTest",
+                "${workspaceFolder}/third_party/CMSIS_5/CMSIS/Core/Include",
+                "${workspaceFolder}/lib/system/inc",
+                "${workspaceFolder}/lib/rcc/inc"
+            ],
+            "defines": [
+                "UTEST_HOST=1"
+            ],
+            "compilerPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.07\\bin\\arm-none-eabi-cpp",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-arm"
         }
     ],
     "version": 4

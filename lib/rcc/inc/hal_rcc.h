@@ -1,9 +1,6 @@
 #pragma once
 
 #include "hal_system.h"
-#include "hal_rcc_clocks.h"
-#include "hal_rcc_regs.h"
-#include "hal_rcc_pll.h"
 
 #define HSIRDY_TIMEOUT_NS (500)
 

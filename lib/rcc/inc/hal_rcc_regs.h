@@ -12,7 +12,7 @@ typedef struct RCC_TypeDef
     uint32_t AHB2RSTR;
     uint32_t AHB3RSTR;
     uint32_t reserved1;
-    uint32_t RCC_APB1RSTR;
+    uint32_t APB1RSTR;
     uint32_t APB2RSTR;
     uint32_t reserved2;
     uint32_t reserved3;
@@ -47,6 +47,7 @@ typedef struct RCC_TypeDef
 
 /* RCC clock control register (RCC_CR) */
 #define RCC_CR_DEFAULT          (0x00000083)
+
 #define RCC_CR_HSION_POS        (0x00)
 #define RCC_CR_HSION_MSK        (0x01 << RCC_CR_HSION_POS)
 #define RCC_CR_HSIRDY_POS       (0x01)
@@ -74,8 +75,31 @@ typedef struct RCC_TypeDef
 
 #define RCC_CR_HSI_ON           (0x01)
 
+/* RCC PLL configuration register (RCC_PLLCFGR) */
+#define RCC_PLLCFGR_DEFAULT (0x24003010)
+
+#define RCC_PLLCFGR_PLLM_POS    (0x00)
+#define RCC_PLLCFGR_PLLM_MSK    (0x3F << RCC_PLLCFGR_PLLM_POS)
+#define RCC_PLLCFGR_PLLN_POS    (0x06)
+#define RCC_PLLCFGR_PLLN_MSK    (0x3FF << RCC_PLLCFGR_PLLN_POS)
+#define RCC_PLLCFGR_PLLP_POS    (0x10)
+#define RCC_PLLCFGR_PLLP_MSK    (0x03 << RCC_PLLCFGR_PLLP_POS)
+#define RCC_PLLCFGR_PLLSRC_POS  (0x16)
+#define RCC_PLLCFGR_PLLSRC_MSK  (0x01 << RCC_PLLCFGR_PLLSRC_POS)
+#define RCC_PLLCFGR_PLLQ_POS    (0x18)
+#define RCC_PLLCFGR_PLLQ_MSK    (0x0F << RCC_PLLCFGR_PLLQ_POS)
+
+#define PLL_SOURCE_HSE (1)
+#define PLL_SOURCE_HSI (0)
+
+#define PLL_PLLCFGR_P(REG_VALUE) PLL_PLLCFGR_P ## REG_VALUE
+#define PLL_PLLCFGR_P0 (2)
+#define PLL_PLLCFGR_P1 (4)
+#define PLL_PLLCFGR_P2 (6)
+#define PLL_PLLCFGR_P3 (8)
+
 /* RCC clock configuration register (RCC_CFGR) */
-#define RCC_CFGR_RESET_VALUE    (0x00000000U)
+#define RCC_CFGR_DEFAULT (0x00000000U)
 
 #define RCC_CFGR_SW_POS         (0x00)
 #define RCC_CFGR_SW_MSK         (0x03 << RCC_CFGR_SW_POS)
@@ -127,6 +151,16 @@ typedef struct RCC_TypeDef
 #define MCO2_DIV3               (0x05)
 #define MCO2_DIV4               (0x06)
 #define MCO2_DIV5               (0x07)
+
+/* RCC clock interrupt register (RCC_CIR) */
+#define RCC_CIR_DEFAULT (0x00000000U)
+
+#define RCC_CIR
+#define RCC_CIR
+#define RCC_CIR
+#define RCC_CIR
+#define RCC_CIR
+
 
 /* RCC APB2 peripheral clock enable register (RCC_APB2ENR) */
 #define RCC_APB2ENR_TIM1EN_POS      (0x00)

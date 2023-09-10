@@ -2,11 +2,12 @@
 
 #include "stdio.h"
 
-#define RCC_SYSCLK_MAX      (180000000UL)
-#define RCC_SYSCLK_DEFAULT  (16000000UL)
-#define RCC_HCLK_DEFAULT    (16000000UL)
-#define RCC_FCLK_DEFAULT    (16000000UL)
-#define RCC_SYSTICK_DEFAULT (16000000UL) 
+#define RCC_SYSCLK_MAX      (180000000)
+#define RCC_PLLCLK_DEFAULT  (96000000)
+#define RCC_SYSCLK_DEFAULT  (16000000)
+#define RCC_HCLK_DEFAULT    (16000000)
+#define RCC_FCLK_DEFAULT    (16000000)
+#define RCC_SYSTICK_DEFAULT (16000000) 
 
 typedef struct clocks {
     uint32_t sysclk;
