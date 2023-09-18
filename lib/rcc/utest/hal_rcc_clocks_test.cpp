@@ -4,12 +4,11 @@
 extern "C" {
     #include "hal_core.h"
     #include "hal_rcc_regs.h"
+    #include "hal_rcc.h"
 }
 
 TEST_GROUP(RccClocks)
 {
-    utest_static uint32_t rcc_clock_real_pllout(void);
-
     RCC_TypeDef* addr;
 
 #if (defined UTEST_TARGET && UTEST_TARGET==1)
@@ -31,7 +30,7 @@ TEST_GROUP(RccClocks)
     void setup()
     {
         addr = (RCC_TypeDef*)malloc(sizeof(RCC_TypeDef));
-        memset(addr, 0, sizeof(RCC_TypeDef));
+        reset_rcc(addr);
     }
     void teardown()
     {
@@ -40,7 +39,7 @@ TEST_GROUP(RccClocks)
 #endif
 };
 
-TEST(RccClocks, RealPllout_default)
+TEST(RccClocks, ResetRcc)
 {
     CHECK_EQUAL(96000000, rcc_clock_real_pllout());
 }

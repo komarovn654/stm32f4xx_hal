@@ -3,7 +3,7 @@
 #include "hal_rcc_regs.h"
     
 #if (defined UTEST_TARGET && UTEST_TARGET==1) || (defined UTEST_HOST && UTEST_HOST==1)
-void set_rcc_default(RCC_TypeDef* addr)
+void reset_rcc(RCC_TypeDef* addr)
 {
     addr->CR = RCC_CR_DEFAULT;
     addr->PLLCFGR = RCC_PLLCFGR_DEFAULT;

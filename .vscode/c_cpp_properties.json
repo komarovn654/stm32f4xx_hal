@@ -11,7 +11,7 @@
                 "${workspaceFolder}/lib/rcc/inc"
             ],
             "defines": [
-                "UTEST_TARGET=1"
+                "UTEST_HOST=1"
             ],
             "macFrameworkPath": [
                 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"

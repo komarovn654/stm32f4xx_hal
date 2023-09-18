@@ -15,3 +15,5 @@ typedef enum error_rcc
 } error_rcc;
 
 #define ERROR_CODE_RCC(num) (ERROR_CODE(ERROR_CODE_RCC, num))
+
+void reset_rcc(RCC_TypeDef* addr);
