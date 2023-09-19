@@ -92,11 +92,11 @@ typedef struct RCC_TypeDef
 #define PLL_SOURCE_HSE (1)
 #define PLL_SOURCE_HSI (0)
 
-#define PLL_PLLCFGR_P(REG_VALUE) PLL_PLLCFGR_P ## REG_VALUE
 #define PLL_PLLCFGR_P0 (2)
 #define PLL_PLLCFGR_P1 (4)
 #define PLL_PLLCFGR_P2 (6)
 #define PLL_PLLCFGR_P3 (8)
+#define PLL_PLLCFGR_P(REG_VALUE) (REG_VALUE * 2 + 2)
 
 /* RCC clock configuration register (RCC_CFGR) */
 #define RCC_CFGR_DEFAULT (0x00000000U)

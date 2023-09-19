@@ -2,13 +2,12 @@
 #include "hal_rcc.h"
 #include "hal_rcc_regs.h"
     
-#if (defined UTEST_TARGET && UTEST_TARGET==1) || (defined UTEST_HOST && UTEST_HOST==1)
 void reset_rcc(RCC_TypeDef* addr)
 {
     addr->CR = RCC_CR_DEFAULT;
     addr->PLLCFGR = RCC_PLLCFGR_DEFAULT;
     addr->CFGR = RCC_CFGR_DEFAULT;
-    addr->CIR = RCC_CR_DEFAULT;
+    addr->CIR = RCC_CIR_DEFAULT;
     addr->AHB1RSTR = RCC_AHB1RSTR_DEFAULT;
     addr->AHB2RSTR = RCC_AHB2RSTR_DEFAULT;
     addr->AHB3RSTR = RCC_AHB3RSTR_DEFAULT;
@@ -30,4 +29,3 @@ void reset_rcc(RCC_TypeDef* addr)
     addr->PLLSAICFGR = RCC_PLLSAICFGR_DEFAULT;
     addr->DCKCFGR = RCC_DCKCFGR_DEFAULT;
 }
-#endif

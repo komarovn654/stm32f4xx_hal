@@ -25,5 +25,3 @@
 
 void crit_section_start(void);
 void crit_section_end(void);
-
-

@@ -43,7 +43,8 @@ utest_static uint32_t rcc_clock_real_systick()
 utest_static uint32_t rcc_clock_real_pllout()
 {
     uint32_t pll_in = ((GET_BIT(RCC->PLLCFGR, RCC_PLLCFGR_PLLSRC_MSK) >> RCC_PLLCFGR_PLLSRC_POS) == PLL_SOURCE_HSE) ? HSE_FREQUENCY : HSI_FREQUENCY;
-    uint32_t p = PLL_PLLCFGR_P(GET_BIT(RCC->PLLCFGR, RCC_PLLCFGR_PLLP_MSK) >> RCC_PLLCFGR_PLLP_POS); // expand to PLL_PLLCFGR_P0 or PLL_PLLCFGR_P1 etc
+    uint32_t p_num = GET_BIT(RCC->PLLCFGR, RCC_PLLCFGR_PLLP_MSK) >> RCC_PLLCFGR_PLLP_POS;
+    uint32_t p = PLL_PLLCFGR_P(p_num); // expand to PLL_PLLCFGR_P0 or PLL_PLLCFGR_P1 etc
     uint32_t m = GET_BIT(RCC->PLLCFGR, RCC_PLLCFGR_PLLM_MSK) >> RCC_PLLCFGR_PLLM_POS;
     uint32_t n = GET_BIT(RCC->PLLCFGR, RCC_PLLCFGR_PLLN_MSK) >> RCC_PLLCFGR_PLLN_POS;
     uint32_t pll_out = ((pll_in * (n / m)) / p);
