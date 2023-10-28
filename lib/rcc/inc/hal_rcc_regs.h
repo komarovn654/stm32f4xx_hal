@@ -73,6 +73,8 @@ typedef struct RCC_TypeDef
 #define RCC_CR_PLLI2SRDY_POS    (0x1B)
 #define RCC_CR_PLLI2SRDY_MSK    (0x01 << RCC_CR_PLLI2SRDY_POS)
 
+#define RCC_CR_PLL_ON           (0x01)
+#define RCC_CR_HSE_ON           (0x01)
 #define RCC_CR_HSI_ON           (0x01)
 
 /* RCC PLL configuration register (RCC_PLLCFGR) */
@@ -96,7 +98,7 @@ typedef struct RCC_TypeDef
 #define PLL_PLLCFGR_P1 (4)
 #define PLL_PLLCFGR_P2 (6)
 #define PLL_PLLCFGR_P3 (8)
-#define PLL_PLLCFGR_P(REG_VALUE) (REG_VALUE * 2 + 2)
+#define PLL_PLLCFGR_P(REG_VAL) (REG_VAL * 2 + 2)
 
 /* RCC clock configuration register (RCC_CFGR) */
 #define RCC_CFGR_DEFAULT (0x00000000U)
@@ -124,33 +126,33 @@ typedef struct RCC_TypeDef
 #define RCC_CFGR_MCO2_POS       (0x1E)
 #define RCC_CFGR_MCO2_MSK       (0x03 << RCC_CFGR_MCO2_POS)
 
-#define SW_SRC_HSI              (0x00)
-#define SW_SRC_HSE              (0x01)
-#define SW_SRC_PLL              (0x02)
+#define RCC_SW_SRC_HSI          (0x00)
+#define RCC_SW_SRC_HSE          (0x01)
+#define RCC_SW_SRC_PLL          (0x02)
 
-#define SWS_ACT_HSI             (0x00)
-#define SWS_ACT_HSE             (0x01)
-#define SWS_ACT_PLL             (0x02)
+#define RCC_SWS_ACT_HSI         (0x00)
+#define RCC_SWS_ACT_HSE         (0x01)
+#define RCC_SWS_ACT_PLL         (0x02)
 
-#define MCO1_SRC_HSI            (0x00)
-#define MCO1_SRC_LSE            (0x01)
-#define MCO1_SRC_HSE            (0x02)
-#define MCO1_SRC_PLL            (0x03)
+#define RCC_MCO1_SRC_HSI        (0x00)
+#define RCC_MCO1_SRC_LSE        (0x01)
+#define RCC_MCO1_SRC_HSE        (0x02)
+#define RCC_MCO1_SRC_PLL        (0x03)
 
-#define MCO1_DIV2               (0x04)
-#define MCO1_DIV3               (0x05)
-#define MCO1_DIV4               (0x06)
-#define MCO1_DIV5               (0x07)
+#define RCC_MCO1_DIV2           (0x04)
+#define RCC_MCO1_DIV3           (0x05)
+#define RCC_MCO1_DIV4           (0x06)
+#define RCC_MCO1_DIV5           (0x07)
 
-#define MCO2_SRC_SYSCLK         (0x00)
-#define MCO2_SRC_PLLI2S         (0x01)
-#define MCO2_SRC_HSE            (0x02)
-#define MCO2_SRC_PLL            (0x03)
+#define RCC_MCO2_SRC_SYSCLK     (0x00)
+#define RCC_MCO2_SRC_PLLI2S     (0x01)
+#define RCC_MCO2_SRC_HSE        (0x02)
+#define RCC_MCO2_SRC_PLL        (0x03)
 
-#define MCO2_DIV2               (0x04)
-#define MCO2_DIV3               (0x05)
-#define MCO2_DIV4               (0x06)
-#define MCO2_DIV5               (0x07)
+#define RCC_MCO2_DIV2           (0x04)
+#define RCC_MCO2_DIV3           (0x05)
+#define RCC_MCO2_DIV4           (0x06)
+#define RCC_MCO2_DIV5           (0x07)
 
 /* RCC clock interrupt register (RCC_CIR) */
 #define RCC_CIR_DEFAULT (0x00000000U)

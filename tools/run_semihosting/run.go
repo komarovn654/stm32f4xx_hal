@@ -45,7 +45,7 @@ func main() {
 	t := time.Now()
 
 	for true {
-		if time.Since(t) > time.Second*10 {
+		if time.Since(t) > time.Second*60 {
 			break
 		}
 	}

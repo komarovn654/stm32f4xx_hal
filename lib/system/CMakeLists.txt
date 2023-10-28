@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.27.1)
 
 project(system_lib)
 
-set(PROJECT_HOST_UTEST      "sl_ut_host")
-set(PROJECT_TARGET_UTEST    "sl_ut_target")
-set(PROJECT_TARGET_SH_UTEST "sl_ut_target_sh")
+set(PROJECT_HOST_UTEST      "sys_ut_host")
+set(PROJECT_TARGET_UTEST    "sys_ut_target")
+set(PROJECT_TARGET_SH_UTEST "sys_ut_target_sh")
 
 set(COMMON_SOURCES 
     src/hal_system.c

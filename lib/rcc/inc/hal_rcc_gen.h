@@ -15,5 +15,5 @@
 
 #define PLL_DIV_FACTOR_M (4)
 #define PLL_DIV_FACTOR_N (168)
-#define PLL_DIV_FACTOR_P (2)
+#define PLL_DIV_FACTOR_P (0)
 #define PLL_DIV_FACTOR_Q (7)

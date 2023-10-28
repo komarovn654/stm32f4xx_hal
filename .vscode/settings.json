@@ -19,7 +19,10 @@
         "hal_rcc_clocks.h": "c",
         "stdio.h": "c",
         "hal_rcc.h": "c",
-        "hal_rcc_regs.h": "c"
+        "hal_rcc_regs.h": "c",
+        "ranges": "cpp",
+        "hal_core.h": "c",
+        "functional": "c"
     },
     "cortex-debug.gdbPath": "/Applications/ARM/bin/arm-none-eabi-gdb",
     "cortex-debug.openocdPath": "/opt/homebrew/bin/openocd",

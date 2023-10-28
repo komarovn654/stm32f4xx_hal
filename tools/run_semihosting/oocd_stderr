@@ -9,14 +9,14 @@ Info : Listening on port 6666 for tcl connections
 Info : Listening on port 4444 for telnet connections
 Info : clock speed 2000 kHz
 Info : STLINK V2J37M26 (API v2) VID:PID 0483:374B
-Info : Target voltage: 2.900944
+Info : Target voltage: 2.902359
 Info : [stm32f4x.cpu] Cortex-M4 r0p1 processor detected
 Info : [stm32f4x.cpu] target has 6 breakpoints, 4 watchpoints
 Info : starting gdb server for stm32f4x.cpu on 3333
 Info : Listening on port 3333 for gdb connections
 Info : accepting 'gdb' connection on tcp/3333
 [stm32f4x.cpu] halted due to breakpoint, current mode: Thread 
-xPSR: 0x41000000 pc: 0x0803069c msp: 0x2001fe50
+xPSR: 0x41000000 pc: 0x0802fba4 msp: 0x2001fe50
 Info : device id = 0x10076413
 Info : flash size = 1024 KiB
 Info : flash size = 512 bytes
@@ -24,3 +24,4 @@ Warn : Prefer GDB command "target extended-remote :3333" instead of "target remo
 Info : Unable to match requested speed 2000 kHz, using 1800 kHz
 Info : Unable to match requested speed 2000 kHz, using 1800 kHz
 Info : dropped 'gdb' connection
+shutdown command invoked

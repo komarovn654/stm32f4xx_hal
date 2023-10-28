@@ -6,7 +6,7 @@ extern "C" {
     #include "hal_system.h"
 }
 
-TEST_GROUP(BitsManipulation)
+TEST_GROUP(Core)
 {
     void setup()
     {
@@ -16,7 +16,7 @@ TEST_GROUP(BitsManipulation)
     }
 };
 
-TEST(BitsManipulation, SetBit)
+TEST(Core, SetBit)
 {
     uint32_t bit = 1;
     for (uint32_t i = 0; i < 32; i++, bit = bit << 1) {
@@ -26,7 +26,7 @@ TEST(BitsManipulation, SetBit)
     }
 }
 
-TEST(BitsManipulation, ClrBit)
+TEST(Core, ClrBit)
 {
     uint32_t bit = 1;
     for (uint32_t i = 0; i < 32; i++, bit = bit << 1) {
@@ -36,11 +36,25 @@ TEST(BitsManipulation, ClrBit)
     }
 }
 
-TEST(BitsManipulation, GetBit)
+TEST(Core, GetBit)
 {
     uint32_t bit = 1;
     uint32_t reg = 0xAAAAAAAA;
     for (uint32_t i = 0; i < 32; i++, bit = bit << 1) {
         CHECK_EQUAL(reg & bit, GET_BIT(reg, bit));
     }
+}
+
+TEST(Core, WaitTicks_Event) {
+    volatile uint32_t timeout = 500;
+    WAIT_TICKS(true, timeout);
+
+    CHECK(timeout > 0);
+}
+
+TEST(Core, WaitTicks_Timeout) {
+    volatile uint32_t timeout = 500;
+    WAIT_TICKS(false, timeout);
+
+    CHECK(timeout == 0);
 }

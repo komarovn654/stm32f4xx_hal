@@ -1,9 +1,9 @@
 #! /bin/sh
 
 ROOT_PATH="/Users/nikolajkomarov/stm32f4xx_hal"
-BIN_NAME_HOST="sl_ut_host"
-BIN_NAME_TARGET="sl_ut_target"
-BIN_NAME_TARGET_SH="sl_ut_target_sh"
+BIN_NAME_HOST="rcc_ut_host"
+BIN_NAME_TARGET="rcc_ut_target"
+BIN_NAME_TARGET_SH="rcc_ut_target_sh"
 
 mkdir -p out out/build_utest_host out/build_utest_target out/bin
 

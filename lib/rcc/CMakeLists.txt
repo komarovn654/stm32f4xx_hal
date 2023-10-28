@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.27.1)
 
 project(rcc_lib)
 
-set(PROJECT_HOST_UTEST      "sl_ut_host")
-set(PROJECT_TARGET_UTEST    "sl_ut_target")
-set(PROJECT_TARGET_SH_UTEST "sl_ut_target_sh")
+set(PROJECT_HOST_UTEST      "rcc_ut_host")
+set(PROJECT_TARGET_UTEST    "rcc_ut_target")
+set(PROJECT_TARGET_SH_UTEST "rcc_ut_target_sh")
 
 set(COMMON_SOURCES 
     src/hal_rcc.c
