@@ -47,6 +47,7 @@ typedef struct RCC_TypeDef
 
 /* RCC clock control register (RCC_CR) */
 #define RCC_CR_DEFAULT          (0x00000083)
+#define RCC_CR_DEFAULT_MSK      (0xFFFF00FF)
 
 #define RCC_CR_HSION_POS        (0x00)
 #define RCC_CR_HSION_MSK        (0x01 << RCC_CR_HSION_POS)
@@ -517,7 +518,7 @@ typedef struct RCC_TypeDef
 #define RCC_APB2ENR_LTDCEN_MSK      (0x01 << RCC_APB2ENR_LTDCEN_POS)
 
 /* RCC AHB1 peripheral clock enable in low power mode register (RCC_AHB1LPENR) */
-#define RCC_AHB1LPENR_DEFAULT (0x7EEF97FFU)
+#define RCC_AHB1LPENR_DEFAULT (0x7E6791FFU)
 
 #define RCC_AHB1LPENR_GPIOALPEN_POS     (0x00)
 #define RCC_AHB1LPENR_GPIOALPEN_MSK     (0x01 << RCC_AHB1LPENR_GPIOALPEN_POS)
@@ -593,7 +594,7 @@ typedef struct RCC_TypeDef
 #define RCC_AHB2LPENR_FMCLPEN_MSK  (0x01 << RCC_AHB2LPENR_FMCLPEN_POS)
 
 /* RCC APB1 peripheral clock enable in low power mode register (RCC_APB1LPENR) */
-#define RCC_APB1LPENR_DEFAULT (0xF6FEC9FFU)
+#define RCC_APB1LPENR_DEFAULT (0x36FEC9FFU)
 
 #define RCC_APB1LPENR_TIM2LPEN_POS      (0x00)
 #define RCC_APB1LPENR_TIM2LPEN_MSK      (0x01 << RCC_APB1LPENR_TIM2LPEN_POS)
@@ -647,7 +648,7 @@ typedef struct RCC_TypeDef
 #define RCC_APB1LPENR_UART8LPEN_MSK     (0x01 << RCC_APB1LPENR_UART8LPEN_POS)
 
 /* RCC APB2 peripheral clock enabled in low power mode register (RCC_APB2LPENR) */
-#define RCC_APB2LPENR_DEFAULT (0x04777F33U)
+#define RCC_APB2LPENR_DEFAULT (0x00075F33U)
 
 #define RCC_APB2LPENR_TIM1LPEN_POS      (0x00)
 #define RCC_APB2LPENR_TIM1LPEN_MSK      (0x01 << RCC_APB2LPENR_TIM1LPEN_POS)
@@ -738,7 +739,7 @@ typedef struct RCC_TypeDef
 #define RCC_SSCGR_SSCGEN_POS    (0x1F)
 
 /* RCC PLLI2S configuration register (RCC_PLLI2SCFGR) */
-#define RCC_PLLI2SCFGR_DEFAULT (0x24003000U)
+#define RCC_PLLI2SCFGR_DEFAULT (0x04003000U)
 
 #define RCC_PLLI2SCFGR_PLLI2SN_POS  (0x06)
 #define RCC_PLLI2SCFGR_PLLI2SN_MSK  (0x1FF << RCC_PLLI2SCFGR_PLLI2SN_POS)
@@ -748,7 +749,7 @@ typedef struct RCC_TypeDef
 #define RCC_PLLI2SCFGR_PLLI2SR_MSK  (0x07 << RCC_PLLI2SCFGR_PLLI2SR_POS)
 
 /* RCC PLL configuration register (RCC_PLLSAICFGR) */
-#define RCC_PLLSAICFGR_DEFAULT (0x24003000U)
+#define RCC_PLLSAICFGR_DEFAULT (0x20003000U)
 
 #define RCC_PLLSAICFGR_PLLSAIN_POS  (0x06)
 #define RCC_PLLSAICFGR_PLLSAIN_MSK  (0x1FF << RCC_PLLSAICFGR_PLLSAIN_POS)

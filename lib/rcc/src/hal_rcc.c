@@ -1,4 +1,5 @@
 #include "hal_core.h"
+#include "hal_flash.h" // flash_setup_required
 #include "hal_rcc.h"
 #include "hal_rcc_gen.h"
 #include "hal_rcc_regs.h"
@@ -19,7 +20,7 @@ error rcc_reset(RCC_TypeDef* addr)
         1000, ERROR_RCC_SWSRDY);
 
     /* Turn off PLL */
-    CLR_BIT(addr->CR, RCC_CR_PLLON_MSK << RCC_CR_PLLON_POS);
+    CLR_BIT(addr->CR, RCC_CR_PLLON_MSK);
     WAIT_TICKS_RET_ERR(GET_BIT_VAL(addr->CR, RCC_CR_PLLRDY_MSK, RCC_CR_PLLRDY_POS) == 0, 
         1000, ERROR_RCC_PLLRDY);        
 
@@ -99,11 +100,14 @@ utest_static error rcc_setup_required_pll(RCC_TypeDef* addr)
     WAIT_TICKS_RET_ERR(GET_BIT_VAL(addr->CR, RCC_CR_PLLRDY_MSK, RCC_CR_PLLRDY_POS) == RCC_CR_PLL_ON,
         1000, ERROR_RCC_PLLRDY);
 
+    /* Setup flash latency */
+    flash_setup_required();
+
     /* Select PLL as a system clock */
     SET_BIT(addr->CFGR, RCC_SW_SRC_PLL << RCC_CFGR_SW_POS);
     WAIT_TICKS_RET_ERR(GET_BIT_VAL(addr->CFGR, RCC_CFGR_SWS_MSK, RCC_CFGR_SWS_POS) == RCC_SW_SRC_PLL,
-        1000, ERROR_RCC_SWSRDY);        
-
+        1000, ERROR_RCC_SWSRDY);
+    printf("6. CR:0x%X CFGR:0x%X PLLCFGR:0x%X\n", addr->CR, addr->CFGR, addr->PLLCFGR);
     return ERROR_NOERROR;  
 }
 
@@ -111,4 +115,5 @@ error rcc_setup_required_frequency(RCC_TypeDef* addr)
 {
     /* Setup, Enable and Select PLL as a system clock */
     CERR(rcc_setup_required_pll(addr));
+    return ERROR_NOERROR;
 }

@@ -1,0 +1,89 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 27,
+        "patch": 1
+    },
+    "configurePresets": [
+        {
+            "name": "host_clang",
+            "displayName": "Clang 14.0.3",
+            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/bin/clang",
+                "CMAKE_CXX_COMPILER": "/usr/bin/clang++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_MACHINE_TYPE": "Host"
+            },
+            "environment": {
+                "CFLAGS": "-g3 -D UTEST_HOST=1",
+                "CXXFLAGS": "-g3 -D UTEST_HOST=1"
+            }
+        },
+        {
+            "name": "target_sh_gcc",
+            "displayName": "GCC 10.3.1 arm-none-eabi, semihosting",
+            "description": "Using compilers: C = /Applications/ARM/bin/arm-none-eabi-gcc, CXX = /Applications/ARM/bin/arm-none-eabi-g++",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "toolchainFile": "${sourceDir}/toolchain-arm-none-eabi.cmake",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/Applications/ARM/bin/arm-none-eabi-gcc",
+                "CMAKE_CXX_COMPILER": "/Applications/ARM/bin/arm-none-eabi-g++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_MACHINE_TYPE": "Target"
+            },
+            "environment": {
+              "CFLAGS": "-mthumb -mcpu=cortex-m4 --specs=rdimon.specs -g3 -D UTEST_TARGET=1",
+              "CXXFLAGS": "-mthumb -mcpu=cortex-m4 --specs=rdimon.specs -g3 -D UTEST_TARGET=1"
+            }
+        },
+        {
+            "name": "target_gcc",
+            "displayName": "GCC 10.3.1 arm-none-eabi",
+            "description": "Using compilers: C = /Applications/ARM/bin/arm-none-eabi-gcc, CXX = /Applications/ARM/bin/arm-none-eabi-g++",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "toolchainFile": "${sourceDir}/toolchain-arm-none-eabi.cmake",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/Applications/ARM/bin/arm-none-eabi-gcc",
+                "CMAKE_CXX_COMPILER": "/Applications/ARM/bin/arm-none-eabi-g++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_MACHINE_TYPE": "Target"
+            },
+            "environment": {
+              "CFLAGS": "-mthumb -mcpu=cortex-m4 --specs=nano.specs --specs=nosys.specs -g3 -D UTEST_TARGET=1",
+              "CXXFLAGS": "-mthumb -mcpu=cortex-m4 --specs=nano.specs --specs=nosys.specs -g3 -D UTEST_TARGET=1"
+            }
+        }        
+    ],
+    "testPresets": [
+        {
+            "name": "unit_tests_host",
+            "configurePreset": "host_clang",
+            "output": {
+                "outputOnFailure": true,
+                "verbosity": "verbose"
+            },
+            "execution": {
+                "noTestsAction": "error",
+                "stopOnFailure": true
+            }
+        },
+        {
+          "name": "unit_tests_target_sh",
+          "configurePreset": "target_sh_gcc",
+          "output": {
+              "outputOnFailure": true,
+              "verbosity": "verbose"
+          },
+          "execution": {
+              "noTestsAction": "error",
+              "stopOnFailure": true
+          }
+      }
+    ]
+}

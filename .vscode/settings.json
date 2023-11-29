@@ -22,9 +22,17 @@
         "hal_rcc_regs.h": "c",
         "ranges": "cpp",
         "hal_core.h": "c",
-        "functional": "c"
+        "functional": "c",
+        "optional": "c",
+        "istream": "c",
+        "ostream": "c",
+        "system_error": "c",
+        "array": "c",
+        "tuple": "c",
+        "utility": "c"
     },
     "cortex-debug.gdbPath": "/Applications/ARM/bin/arm-none-eabi-gdb",
     "cortex-debug.openocdPath": "/opt/homebrew/bin/openocd",
-    "cortex-debug.variableUseNaturalFormat": true
+    "cortex-debug.variableUseNaturalFormat": true,
+    "cmake.useCMakePresets": "always"
 }

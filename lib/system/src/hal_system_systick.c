@@ -24,7 +24,7 @@ error systick_apply_settings(SysTick_Type* addr, systick* settings)
 
     uint8_t clk_source = (settings->clk_src == SYSTICK_SOURCE_AHB_DIV8) ? 0 : 1;
     SET_BIT(addr->CTRL, (clk_source << SysTick_CTRL_CLKSOURCE_Pos) | 
-                        (settings->interrupt << SysTick_CTRL_TICKINT_Pos));
+                        (uint8_t)(settings->interrupt << SysTick_CTRL_TICKINT_Pos));
     SET_BIT(addr->LOAD, settings->reload_value << SysTick_LOAD_RELOAD_Pos);
     return ERROR_NOERROR;
 }

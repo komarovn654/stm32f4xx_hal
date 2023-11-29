@@ -23,6 +23,11 @@ TEST_GROUP(RccClocks)
 #if (defined UTEST_TARGET && UTEST_TARGET==1)
     void setup()
     {
+        addr = RCC;
+        rcc_reset(addr);
+
+        clk = rcc_clocks_get();
+        rcc_clocks_set_default();        
     }
     void teardown()
     {

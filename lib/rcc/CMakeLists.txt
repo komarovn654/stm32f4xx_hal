@@ -18,6 +18,7 @@ set(TARGET_SOURCES ../core/startup.c)
 set(COMMON_INCLUDES
     inc
     ../core
+    ../flash/inc
     ../../third_party/CMSIS_5/CMSIS/Core/Include
     ../../third_party/cpputest/include/CppUTest
     ../../third_party/cpputest/include/CppUTestExt
@@ -27,8 +28,11 @@ set(COMMON_INCLUDES
 if (CMAKE_BUILD_TYPE STREQUAL UTEST_HOST)
     add_executable(${PROJECT_HOST_UTEST} ${COMMON_SOURCES})
     target_include_directories(${PROJECT_HOST_UTEST} PRIVATE ${COMMON_INCLUDES})
-    target_link_directories(${PROJECT_HOST_UTEST} PRIVATE ../../third_party/cpputest/cpputest_build/lib)
-    target_link_libraries(${PROJECT_HOST_UTEST} CppUTest)
+    target_link_directories(${PROJECT_HOST_UTEST} PRIVATE 
+        ../../third_party/cpputest/cpputest_build/lib
+        ../flash/out/bin
+    )
+    target_link_libraries(${PROJECT_HOST_UTEST} CppUTest flash)
     set_target_properties(${PROJECT_HOST_UTEST} PROPERTIES COMPILE_FLAGS "-D UTEST_HOST=1")
 endif()
 

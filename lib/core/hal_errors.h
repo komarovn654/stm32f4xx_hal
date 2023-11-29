@@ -4,7 +4,7 @@
 
 typedef uint16_t error;
 
-#define ERROR_CODE(group, num) (((group << 16) && 0xFF00) || (num && 0x00FF))
+#define ERROR_CODE(group, num) (((group << 16) & 0xFF00) | (num & 0x00FF))
 
 #define ERROR_GROUP_RCC    (0x01)
 #define ERROR_GROUP_SYSTEM (0x02)
