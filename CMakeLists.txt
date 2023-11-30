@@ -10,3 +10,4 @@ include(ctest)
 # message(BUILD_TESTING="${BUILD_TESTING}")
 
 add_subdirectory(lib/system)
+add_subdirectory(lib/rcc)
